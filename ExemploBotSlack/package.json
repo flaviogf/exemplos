@@ -1,0 +1,19 @@
+{
+  "name": "api-erros",
+  "version": "1.0.0",
+  "description": "api para testes de erros",
+  "main": "index.js",
+  "author": "flavio fernandes",
+  "license": "ISC",
+  "scripts": {
+    "dev": "nodemon"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "axios": "^0.16.1",
+    "mongodb": "^2.2.26",
+    "node-cron": "^1.1.3"
+  }
+}

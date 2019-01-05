@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Agenda</string>
+    <string name="edit_nome">Nome</string>
+    <string name="edit_endereco">Endereço</string>
+    <string name="edit_telefone">Telefone</string>
+    <string name="edit_site">Site</string>
+    <string name="btn_inserir">Inserir</string>
+</resources>

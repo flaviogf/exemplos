@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<div class="row">
+    <div class="col">
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th>Arquivos</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for arquivo in arquivos %}
+            <tr>
+                <td>{{ arquivo }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <a class="btn btn-primary" type="button" href="{{ url_for('download') }}">Baixar</a>
+    </div>
+</div>
+{% endblock %}

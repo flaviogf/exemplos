@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Events</string>
+    <string name="autenticacao_btn_entrar">Entrar</string>
+    <string name="titulo_autenticacao">Bem Vindo</string>
+    <string name="subtitulo_autenticacao">Informe seus dados</string>
+    <string name="autenticao_hint_email">E-mail</string>
+    <string name="autenticacao_hint_senha">Senha</string>
+    <string name="preference_key">PREFERENCE_KEY</string>
+    <string name="token_key">TOKEN_KEY</string>
+    <string name="cadastro_ocorrencia_numero">Nº</string>
+    <string name="cadastro_ocorrencia_data_acontecimento">Data acontecimento</string>
+    <string name="cadastro_ocorrencia_periodo">Periodo</string>
+    <string name="cadastro_ocorrencia_bairro">Bairro</string>
+    <string name="cadastro_ocorrencia_tipo">Tipo Ocorrência</string>
+    <string name="menu_cadastro_ocorrencia_salvar">Salvar</string>
+    <string name="cadastro_ocorrencia_resumo">Resumo</string>
+    <string name="fragment_auto_complete_bairro_label">Bairro</string>
+    <string name="fragment_auto_complete_tipo_ocorrencia_label">Tipo Ocorrencia</string>
+    <string name="fragment_date_picker_data_acontecimento">Data Acontecimento</string>
+    <string name="menu_home_deletar">Deletar</string>
+    <string name="editar">Editar</string>
+    <string name="sair">Sair</string>
+    <string-array name="spinner_periodo">
+        <item>MANHÃ</item>
+        <item>TARDE</item>
+        <item>NOITE</item>
+        <item>MADRUGADA</item>
+    </string-array>
+</resources>

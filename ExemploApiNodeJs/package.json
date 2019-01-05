@@ -1,0 +1,18 @@
+{
+  "name": "projeto1",
+  "version": "1.0.0",
+  "description": "projeto 1",
+  "main": "index.js",
+  "author": "flavio fernandes",
+  "license": "ISC",
+  "scripts": {
+    "dev": "nodemon"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}

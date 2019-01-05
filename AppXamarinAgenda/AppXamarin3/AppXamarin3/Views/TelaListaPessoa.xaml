@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppXamarin3.Views.TelaListaPessoa">
+
+    <StackLayout>
+        <Label Text="Listagem de Pessoas" FontSize="20" HorizontalOptions="Center"></Label>
+
+        <ListView ItemsSource="{Binding Pessoas}" ItemTapped="ListView_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ImageCell ImageSource="https://www.belgia.net/uploads/set_resources_1/84c1e40ea0e759e3f1505eb1788ddf3c_default_photo.png" Text="{Binding Nome}" Detail="{Binding Idade}" TextColor="Black" DetailColor="Brown"></ImageCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>

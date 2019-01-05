@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block conteudo %}
+<div class="row">
+    <div class="col-8">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                {% for pasta in diretorio %}
+                <li class="breadcrumb-item {% if loop.last %} active {% endif %}" aria-current="page">{{ pasta }}
+                </li>
+                {% endfor %}
+            </ol>
+        </nav>
+    </div>
+    <div class="col-4 text-right">
+        <a href="{{ url_for('index') }}" class="btn btn-outline-primary">Voltar</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <table class="table">
+            <tbody>
+            {% for arquivo in arquivos %}
+            <tr>
+                <td>{{ arquivo }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

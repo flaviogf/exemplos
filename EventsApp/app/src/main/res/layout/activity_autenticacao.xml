@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/autenticacao_constraint_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cinzaClaro"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/autenticacao_titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="@string/titulo_autenticacao"
+        android:textAlignment="center"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="32sp" />
+
+    <TextView
+        android:id="@+id/autenticacao_subtitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="@string/subtitulo_autenticacao"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/autenticacao_email_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+
+        <EditText
+            android:id="@+id/autenticacao_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_email"
+            android:drawableRight="@drawable/ic_email"
+            android:ems="10"
+            android:hint="@string/autenticao_hint_email"
+            android:inputType="textEmailAddress" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/autenticacao_senha_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+
+        <EditText
+            android:id="@+id/autenticacao_senha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_key"
+            android:drawableRight="@drawable/ic_key"
+            android:ems="10"
+            android:hint="@string/autenticacao_hint_senha"
+            android:inputType="textPassword" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/autenticacao_btn_entrar"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:text="@string/autenticacao_btn_entrar" />
+
+</LinearLayout>
