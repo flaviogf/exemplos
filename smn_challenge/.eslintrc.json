@@ -1,0 +1,11 @@
+{
+  "extends": "airbnb-base",
+  "rules": {
+    "class-methods-use-this": "off",
+    "no-param-reassign": "off",
+    "semi": "off"
+  },
+  "globals": {
+    "use": true
+  }
+}
