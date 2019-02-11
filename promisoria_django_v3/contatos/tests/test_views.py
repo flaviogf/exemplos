@@ -7,7 +7,7 @@ from contatos.models import Contato
 
 class TestContatoCreate(TestCase):
     def test_contato_create_get(self):
-        url = '/contatos/novo/'
+        url = '/contatos/criar/'
 
         client = Client()
 
@@ -16,7 +16,7 @@ class TestContatoCreate(TestCase):
         self.assertEquals(HTTPStatus.OK, response.status_code)
 
     def test_contato_create_post(self):
-        url = '/contatos/novo/'
+        url = '/contatos/criar/'
 
         request = {
             'nome': 'Flavio',
@@ -54,7 +54,7 @@ class TestContatoUpdate(TestCase):
                                               telefone='11111111111')
 
     def test_contato_update_get(self):
-        url = f'/contatos/{self.contato.contato_id}/atualiza/'
+        url = f'/contatos/{self.contato.contato_id}/atualizar/'
 
         client = Client()
 
@@ -63,7 +63,7 @@ class TestContatoUpdate(TestCase):
         self.assertEquals(HTTPStatus.OK, response.status_code)
 
     def test_contato_update_post(self):
-        url = f'/contatos/{self.contato.contato_id}/atualiza/'
+        url = f'/contatos/{self.contato.contato_id}/atualizar/'
 
         request = {
             'nome': 'atualizado',
@@ -74,5 +74,30 @@ class TestContatoUpdate(TestCase):
         client = Client()
 
         response = client.post(url, request)
+
+        self.assertEquals(HTTPStatus.FOUND, response.status_code)
+
+
+class TestContatoDelete(TestCase):
+    def setUp(self):
+        self.contato = Contato.objects.create(nome='Flavio',
+                                              email='flavio@email.com',
+                                              telefone='11111111111')
+
+    def test_contato_delete_get(self):
+        url = f'/contatos/{self.contato.contato_id}/deletar/'
+
+        client = Client()
+
+        response = client.get(url)
+
+        self.assertEquals(HTTPStatus.OK, response.status_code)
+
+    def test_contato_delete_post(self):
+        url = f'/contatos/{self.contato.contato_id}/deletar/'
+
+        client = Client()
+
+        response = client.post(url)
 
         self.assertEquals(HTTPStatus.FOUND, response.status_code)

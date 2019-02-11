@@ -43,3 +43,14 @@ class ContatoUpdate(View):
             return redirect('contatos:list')
 
         return render(request, 'contatos/update.html', {'contato': contato, 'form': form})
+
+
+class ContatoDelete(View):
+    def get(self, request, contato_id):
+        contato = Contato.objects.get(contato_id=contato_id)
+        form = ContatoForm(instance=contato)
+        return render(request, 'contatos/delete.html', {'contato': contato, 'form': form})
+
+    def post(self, request, contato_id):
+        Contato.objects.get(contato_id=contato_id).delete()
+        return redirect('contatos:list')

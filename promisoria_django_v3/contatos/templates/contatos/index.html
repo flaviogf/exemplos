@@ -18,6 +18,7 @@
       <td>{{ it.nome }}</td>
       <td>{{ it.email }}</td>
       <td><a href="{% url 'contatos:update' it.contato_id %}">Atualizar</a></td>
+      <td><a href="{% url 'contatos:delete' it.contato_id %}">Deletar</a></td>
     </tr>
     {% endfor %}
   </tbody>

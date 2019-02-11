@@ -1,9 +1,9 @@
 {% extends 'commom/base.html' %}
 
-{% block titulo %}Atualiza Contato{% endblock %}
+{% block titulo %}Atualizar Contato{% endblock %}
 
 {% block conteudo %}
-<h1>Atualiza Contato</h1>
+<h1>Atualizar Contato</h1>
 
 <form method='POST' novalidate>
   {% csrf_token %}
@@ -15,7 +15,7 @@
   </div>
   {% endfor %}
 
-  <button type="submit">Salvar</button>
+  <button type="submit">Atualizar</button>
 
   {{ form.errors }}
 </form>
