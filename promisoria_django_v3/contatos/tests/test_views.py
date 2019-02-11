@@ -1,3 +1,5 @@
+from http import HTTPStatus
+
 from django.test import Client, TestCase
 
 from contatos.models import Contato
@@ -5,14 +7,17 @@ from contatos.models import Contato
 
 class TestContatoCreate(TestCase):
     def test_contato_create_get(self):
+        url = '/contatos/novo/'
+
         client = Client()
 
-        response = client.get('/contatos/novo/')
+        response = client.get(url)
 
-        self.assertEquals(200, response.status_code)
-        self.assertIsNotNone(response.context['form'])
+        self.assertEquals(HTTPStatus.OK, response.status_code)
 
     def test_contato_create_post(self):
+        url = '/contatos/novo/'
+
         request = {
             'nome': 'Flavio',
             'email': 'flavio@email.com',
@@ -21,29 +26,25 @@ class TestContatoCreate(TestCase):
 
         client = Client()
 
-        response = client.post('/contatos/novo/', request)
+        response = client.post(url, request)
 
-        total_contatos = Contato.objects.count()
-
-        self.assertEquals(302, response.status_code)
-        self.assertEquals(1, total_contatos)
+        self.assertEquals(HTTPStatus.FOUND, response.status_code)
 
 
 class TestContatoList(TestCase):
     def setUp(self):
-        Contato.objects.create(nome='Flavio',
-                               email='flavio@email.com',
-                               telefone='11111111111')
+        self.contato = Contato.objects.create(nome='Flavio',
+                                              email='flavio@email.com',
+                                              telefone='11111111111')
 
     def test_contato_list_get(self):
+        url = '/contatos/'
+
         client = Client()
 
-        response = client.get('/contatos/')
+        response = client.get(url)
 
-        total_contatos = len(response.context['contatos'])
-
-        self.assertEquals(200, response.status_code)
-        self.assertEquals(1, total_contatos)
+        self.assertEquals(HTTPStatus.OK, response.status_code)
 
 
 class TestContatoUpdate(TestCase):
@@ -53,15 +54,17 @@ class TestContatoUpdate(TestCase):
                                               telefone='11111111111')
 
     def test_contato_update_get(self):
+        url = f'/contatos/{self.contato.contato_id}/atualiza/'
+
         client = Client()
 
-        response = client.get(f'/contatos/{self.contato.contato_id}/atualiza/')
+        response = client.get(url)
 
-        self.assertEquals(200, response.status_code)
-        self.assertEquals(self.contato.nome, response.context['contato'].nome)
-        self.assertIsNotNone(response.context['form'])
+        self.assertEquals(HTTPStatus.OK, response.status_code)
 
     def test_contato_update_post(self):
+        url = f'/contatos/{self.contato.contato_id}/atualiza/'
+
         request = {
             'nome': 'atualizado',
             'email': 'atualizado@email.com',
@@ -70,13 +73,6 @@ class TestContatoUpdate(TestCase):
 
         client = Client()
 
-        response = client.post(f'/contatos/{self.contato.contato_id}/atualiza/',
-                               request)
+        response = client.post(url, request)
 
-        contato_atualizado = Contato.objects.get(
-            contato_id=self.contato.contato_id)
-
-        self.assertEquals(302, response.status_code)
-        self.assertEquals(request['nome'], contato_atualizado.nome)
-        self.assertEquals(request['email'], contato_atualizado.email)
-        self.assertEquals(request['telefone'], contato_atualizado.telefone)
+        self.assertEquals(HTTPStatus.FOUND, response.status_code)
