@@ -1,0 +1,25 @@
+{% extends 'commom/base.html' %}
+
+{% block titulo %}Contatos{% endblock %}
+
+{% block conteudo %}
+<h1>Contatos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th colspan="2">E-mail:</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for it in contatos %}
+    <tr>
+      <td>{{ it.nome }}</td>
+      <td>{{ it.email }}</td>
+      <td><a href="{% url 'contatos:update' it.contato_id %}">Atualizar</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
