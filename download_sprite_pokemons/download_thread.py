@@ -1,5 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
+from os import mkdir
+from os.path import dirname, exists, join
 from queue import Queue
 from threading import Thread
 
@@ -17,7 +19,7 @@ class Pokemon:
 
 class ListPokemons:
     def all(self):
-        response = requests.get(f'{API_URL}pokemon?limit=10')
+        response = requests.get(f'{API_URL}pokemon?limit=100')
 
         response = response.json()
 
@@ -25,7 +27,7 @@ class ListPokemons:
                 for id, pokemon in enumerate(response['results'], 1)]
 
 
-class GetSpritePokemon:
+class GetPokemonSprite:
     def front_default(self, pokemon):
         response = requests.get(f'{API_URL}pokemon/{pokemon.id}')
 
@@ -34,6 +36,24 @@ class GetSpritePokemon:
         sprite = response['sprites']['front_default']
 
         return Pokemon(id=pokemon.id, name=pokemon.name, sprite=sprite)
+
+
+class DownloadPokemonSprite:
+    def __init__(self):
+        self._folder_sprites = join(dirname(__file__), 'sprites')
+
+        if not exists(self._folder_sprites):
+            mkdir(self._folder_sprites)
+
+    def of(self, pokemon):
+        filename = join(self._folder_sprites, f'{pokemon.name}.png')
+
+        sprite = requests.get(pokemon.sprite).content
+
+        with open(filename, 'wb') as file:
+            file.write(sprite)
+
+        return filename
 
 
 def timeit(label=''):
@@ -54,24 +74,34 @@ def main():
     queue = Queue()
 
     def get_sprite_of_list_pokemon(pokemons):
-        get_sprite_pokemon = GetSpritePokemon()
-        return [get_sprite_pokemon.front_default(pokemon) for pokemon in pokemons]
+        get_pokemon_sprite = GetPokemonSprite()
+        return [get_pokemon_sprite.front_default(pokemon) for pokemon in pokemons]
 
     def get_first_half():
         list_pokemons = ListPokemons()
+        download_sprite_pokemons = DownloadPokemonSprite()
+
         pokemons = list_pokemons.all()
-        pokemons = get_sprite_of_list_pokemon(pokemons[:5])
+
+        half_pokemons = len(pokemons) // 2
+
+        pokemons = get_sprite_of_list_pokemon(pokemons[:half_pokemons])
 
         for pokemon in pokemons:
-            queue.put(pokemon)
+            download_sprite_pokemons.of(pokemon)
 
     def get_second_half():
         list_pokemons = ListPokemons()
+        download_sprite_pokemons = DownloadPokemonSprite()
+
         pokemons = list_pokemons.all()
-        pokemons = get_sprite_of_list_pokemon(pokemons[5:])
+
+        half_pokemons = len(pokemons) // 2
+
+        pokemons = get_sprite_of_list_pokemon(pokemons[half_pokemons:])
 
         for pokemon in pokemons:
-            queue.put(pokemon)
+            download_sprite_pokemons.of(pokemon)
 
     first_thread = Thread(name='first_half', target=get_first_half)
     second_thread = Thread(name='second_half', target=get_second_half)
