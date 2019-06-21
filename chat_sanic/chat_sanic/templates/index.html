@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chat</title>
+
+    <style>
+        .chat {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 180px;
+        }
+    </style>
+</head>
+<body>
+<h1>Chat</h1>
+
+<section class="chat">
+    <label for="message" hidden>Message:</label>
+    <textarea name="message" id="message" cols="30" rows="10"></textarea>
+    <button id="send">Send</button>
+</section>
+
+<ul id="messages"></ul>
+
+<script>
+
+    const start = () => {
+        const ws = new WebSocket('ws://192.168.100.11:5000/chat');
+
+        ws.onopen = () => {
+            console.log('socket opened')
+        };
+
+        ws.onmessage = (event) => {
+            const messages = document.querySelector('#messages');
+
+            const message = `${event.data}`;
+
+            const li = document.createElement('li');
+
+            li.innerHTML = message;
+
+            messages.append(li)
+        };
+
+        ws.onclose = (e) => {
+            console.warn('close', e);
+
+            start();
+        };
+
+        ws.onerror = (e) => {
+            console.error('error', e);
+        };
+
+        const message = document.querySelector('#message');
+
+        const send = document.querySelector('#send');
+
+        send.onclick = () => {
+            fetch('http://192.168.100.11:5000/chat', {method: 'POST', body: JSON.stringify({message: message.value})})
+                .then(console.log)
+                .catch(console.error)
+        };
+    };
+
+    start();
+</script>
+</body>
+</html>
