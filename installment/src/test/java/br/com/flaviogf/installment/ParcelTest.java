@@ -11,31 +11,31 @@ public class ParcelTest {
 
     @Test
     public void shouldHasValue() {
-        Parcel parcel = new Parcel(new BigDecimal(1000));
+        final Parcel parcel = new Parcel(new BigDecimal(1000));
 
-        BigDecimal expected = new BigDecimal(1000);
+        final BigDecimal expected = new BigDecimal(1000);
 
-        BigDecimal result = parcel.getValue();
+        final BigDecimal result = parcel.getValue();
 
-        assertEquals(expected.doubleValue(), result.doubleValue(), 0.0001);
+        assertEquals(expected, result);
     }
 
     @Test
     public void shouldHasDueDate() {
-        DateTime today = new DateTime();
+        final DateTime today = new DateTime();
 
-        Parcel parcel = new Parcel(new BigDecimal(1000), today);
+        final Parcel parcel = new Parcel(new BigDecimal(1000), today);
 
         assertEquals(today, parcel.getDueDate());
     }
 
     @Test
     public void shouldDueDateEqualToTodayWhenNotIsInform() {
-        Parcel parcel = new Parcel(new BigDecimal(1000));
+        final Parcel parcel = new Parcel(new BigDecimal(1000));
 
-        DateTime result = parcel.getDueDate();
+        final DateTime result = parcel.getDueDate();
 
-        DateTime expected = new DateTime();
+        final DateTime expected = new DateTime();
 
         assertEquals(expected.dayOfYear(), result.dayOfYear());
     }
