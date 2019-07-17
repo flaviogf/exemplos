@@ -16,16 +16,17 @@ public class ParcelRedistributeTotal implements ParcelStrategy {
         this.installment = installment;
 
         divideParcels();
-        calculateFirstValue();
     }
 
     private void divideParcels() {
+        installment.getListOfParcel().clear();
+
         DateTime firstParcelDueDate = new DateTime();
 
         for (int i = 0; i < installment.getNumberOfParcel(); i++) {
             int nextDay = DAYS_UNTIL_THE_NEXT_PARCEL * i;
 
-            BigDecimal parcelValue = installment.getTotal().divide(new BigDecimal(installment.getNumberOfParcel()), 2, RoundingMode.UP);
+            BigDecimal parcelValue = installment.getTotal().divide(new BigDecimal(installment.getNumberOfParcel()), 2, RoundingMode.HALF_UP);
 
             DateTime parcelDueDate = firstParcelDueDate.plusDays(nextDay);
 
@@ -33,21 +34,7 @@ public class ParcelRedistributeTotal implements ParcelStrategy {
 
             installment.getListOfParcel().add(parcel);
         }
-    }
 
-    private void calculateFirstValue() {
-        BigDecimal totalParcel = new BigDecimal(0);
-
-        int firstParcelIndex = 0;
-
-        for (Parcel parcel : installment.getListOfParcel()) {
-            totalParcel = totalParcel.add(parcel.getValue());
-        }
-
-        BigDecimal rest = installment.getTotal().subtract(totalParcel);
-
-        Parcel lastParcel = installment.getListOfParcel().get(firstParcelIndex);
-
-        installment.getListOfParcel().set(firstParcelIndex, new Parcel(lastParcel.getValue().add(rest), lastParcel.getDueDate()));
+        installment.calculateRest();
     }
 }

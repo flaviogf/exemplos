@@ -477,4 +477,31 @@ public class PaymentTest {
 
         assertEquals(expected, result);
     }
+
+    @Test
+    public void shouldUpdatePaymentMethodUpdateAmountPaidWithRedistributeFromIndexNotRedistributeValuesWhenUpdateLastPaymentMethod() {
+        final BigDecimal total = new BigDecimal(150.00);
+
+        final Payment payment = new Payment(total);
+
+        final PaymentMethod card = new PaymentMethod("Card", new BigDecimal(100));
+        final PaymentMethod creditCard = new PaymentMethod("Credit Card", new BigDecimal(25.00));
+        final PaymentMethod bankCheck = new PaymentMethod("Bank check", new BigDecimal(20.00));
+        PaymentMethod money = new PaymentMethod("Money", new BigDecimal(5.00));
+
+        payment.addPaymentMethod(card);
+        payment.addPaymentMethod(creditCard);
+        payment.addPaymentMethod(bankCheck);
+        payment.addPaymentMethod(money);
+
+        money = new PaymentMethod("Money", new BigDecimal(40.00));
+
+        payment.updatePaymentMethod(3, money, new RedistributeFromIndex(4));
+
+        final BigDecimal expected = new BigDecimal(40.00);
+
+        final BigDecimal result = payment.getPaymentMethods().get(3).getValue();
+
+        assertEquals(expected, result);
+    }
 }

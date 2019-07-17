@@ -13,6 +13,10 @@ public class RedistributeFromIndex implements RedistributeStrategy {
 
     @Override
     public void redistribute(Payment payment) {
+        boolean isLastPayment = payment.getPaymentMethods().size() == fromIndex;
+
+        if (isLastPayment) return;
+
         BigDecimal amountPaidUntilFromIndex = BigDecimal.ZERO;
 
         for (int i = 0; i < fromIndex; i++) {
