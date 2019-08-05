@@ -1,3 +1,3 @@
 # examples
 
-random examples
+Random examples.
