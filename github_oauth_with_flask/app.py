@@ -1,9 +1,8 @@
+from os import environ
+from urllib.parse import parse_qs
+
 import requests
 from flask import Flask, render_template, request
-
-from os import environ
-
-from urllib.parse import parse_qs
 
 CLIENT_ID = environ.get('CLIENT_ID')
 CLIENT_SECRET = environ.get('CLIENT_SECRET')
