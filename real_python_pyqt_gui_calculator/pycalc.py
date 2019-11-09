@@ -1,8 +1,14 @@
 import sys
+from functools import partial
 
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import (QApplication, QGridLayout, QLineEdit, QMainWindow,
                              QPushButton, QVBoxLayout, QWidget)
+
+
+class Model:
+    def evaluate(self, text):
+        return eval(text)
 
 
 class View(QMainWindow):
@@ -64,21 +70,32 @@ class View(QMainWindow):
 
 
 class Controller:
-    def __init__(self, view):
+    def __init__(self, model, view):
+        self._model = model
         self._view = view
 
     def connect(self):
         for button, _ in self._view.buttons:
-            button.clicked.connect(lambda: self.on_click_button(button))
+            button.clicked.connect(partial(self.on_click_button, button))
 
     def on_click_button(self, button):
-        ...
+        if button.text() == 'C':
+            self._view.display_text = ''
+            return
+
+        if button.text() == '=':
+            result = self._model.evaluate(self._view.display_text)
+            self._view.display_text = str(result)
+            return
+
+        self._view.display_text += button.text()
 
 
 def main():
     pycalc = QApplication(sys.argv)
+    model = Model()
     view = View()
-    controller = Controller(view)
+    controller = Controller(model, view)
     view.show()
     controller.connect()
     sys.exit(pycalc.exec())
