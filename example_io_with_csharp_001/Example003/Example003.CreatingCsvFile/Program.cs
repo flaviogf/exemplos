@@ -9,6 +9,11 @@ namespace Example003.CreatingCsvFile
         {
             WithoutStreamWriter();
 
+            WithStreamWriter();
+        }
+
+        private static void WithStreamWriter()
+        {
             using (var file = new FileStream("accounts.csv", FileMode.Append, FileAccess.Write))
             using (var writer = new StreamWriter(file))
             {
