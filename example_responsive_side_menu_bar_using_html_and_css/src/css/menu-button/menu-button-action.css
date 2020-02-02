@@ -1,0 +1,26 @@
+.menu-button__action {
+  background-color: #262626;
+  border: 1px solid #262626;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  height: 45px;
+  font-size: 29px;
+  line-height: 45px !important;
+  margin: 15px 30px;
+  position: absolute;
+  text-align: center;
+  transition: all 0.5s ease;
+  width: 45px;
+}
+
+.menu-button__action--close {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@media (max-width: 768px) {
+  .menu-button__action {
+    display: none !important;
+  }
+}

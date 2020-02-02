@@ -1,0 +1,10 @@
+.sidebar__icon {
+  font-size: 23px;
+  margin-right: 16px;
+}
+
+@media (max-width: 768px) {
+  .sidebar__icon {
+    margin-left: -10px;
+  }
+}

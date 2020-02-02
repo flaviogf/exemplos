@@ -1,0 +1,15 @@
+.menu-button {
+  display: none;
+}
+
+.menu-button:checked ~ label .menu-button__action--open {
+  margin-left: 245px;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.menu-button:checked ~ label .menu-button__action--close {
+  margin-left: 245px;
+  opacity: 1;
+  visibility: visible;
+}

@@ -1,0 +1,14 @@
+{
+  "name": "example_responsive_side_menu_bar_using_html_and_css",
+  "version": "1.0.0",
+  "license": "MIT",
+  "devDependencies": {
+    "parcel": "1.12.4"
+  },
+  "scripts": {
+    "start": "parcel src/index.html"
+  },
+  "dependencies": {
+    "minireset.css": "0.0.6"
+  }
+}

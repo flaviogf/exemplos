@@ -1,0 +1,18 @@
+.sidebar__text {
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .sidebar__text {
+    position: absolute;
+    margin-left: 23px;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .sidebar__item:hover .sidebar__text {
+    opacity: 1;
+    visibility: visible;
+  }
+}

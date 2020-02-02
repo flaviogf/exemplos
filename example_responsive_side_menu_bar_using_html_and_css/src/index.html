@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Side Menu Bar</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap"
+    />
+    <link rel="stylesheet" href="../node_modules/minireset.css/minireset.css" />
+    <link rel="stylesheet" href="./css//menu-button/menu-button-action.css" />
+    <link rel="stylesheet" href="./css//menu-button/menu-button.css" />
+    <link rel="stylesheet" href="./css/sidebar/sidebar-icon.css" />
+    <link rel="stylesheet" href="./css/sidebar/sidebar-item.css" />
+    <link rel="stylesheet" href="./css/sidebar/sidebar-text.css" />
+    <link rel="stylesheet" href="./css//sidebar/sidebar-title.css" />
+    <link rel="stylesheet" href="./css/sidebar/sidebar.css" />
+  </head>
+  <body>
+    <input type="checkbox" id="menu-button" class="menu-button" />
+    <label for="menu-button">
+      <i class="fa fa-bars menu-button__action menu-button__action--open"></i>
+      <i class="fa fa-times menu-button__action menu-button__action--close"></i>
+    </label>
+    <ul class="sidebar">
+      <li class="sidebar__title">My Menu</li>
+      <li class="sidebar__item sidebar__item--active">
+        <i class="sidebar__icon fa fa-qrcode"></i
+        ><span class="sidebar__text">Dashboard</span>
+      </li>
+      <li class="sidebar__item">
+        <i class="sidebar__icon fa fa-link"></i
+        ><span class="sidebar__text">Shortcuts</span>
+      </li>
+      <li class="sidebar__item">
+        <i class="sidebar__icon fa fa-stream"></i
+        ><span class="sidebar__text">Overview</span>
+      </li>
+      <li class="sidebar__item">
+        <i class="sidebar__icon fa fa-calendar"></i
+        ><span class="sidebar__text">Events</span>
+      </li>
+      <li class="sidebar__item">
+        <i class="sidebar__icon fa fa-question-circle"></i
+        ><span class="sidebar__text">About</span>
+      </li>
+      <li class="sidebar__item">
+        <i class="sidebar__icon fa fa-sliders-h"></i>
+        <span class="sidebar__text">Services</span>
+      </li>
+      <li class="sidebar__item">
+        <i class="sidebar__icon fa fa-envelope"></i
+        ><span class="sidebar__text">Contact</span>
+      </li>
+    </ul>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  </body>
+</html>
