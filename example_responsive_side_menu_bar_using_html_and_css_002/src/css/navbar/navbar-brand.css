@@ -1,0 +1,11 @@
+.navbar__brand {
+  cursor: pointer;
+  float: left;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .navbar__brand {
+    display: none;
+  }
+}

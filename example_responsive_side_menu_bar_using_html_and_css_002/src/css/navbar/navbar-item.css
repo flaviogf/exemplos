@@ -1,0 +1,19 @@
+.navbar__item {
+  color: #333333;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 1.5rem;
+  opacity: 0.3;
+  transition: opacity 0.2s;
+}
+
+.navbar__item:not(:hover) {
+  opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+  .navbar__item {
+    display: block;
+    padding: 4rem 1rem;
+  }
+}

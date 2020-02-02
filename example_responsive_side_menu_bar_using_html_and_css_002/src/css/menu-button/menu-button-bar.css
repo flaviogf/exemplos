@@ -1,0 +1,46 @@
+.menu-button__bar,
+.menu-button__bar::after,
+.menu-button__bar::before {
+  background-color: black;
+  height: 3px;
+  content: "";
+  left: 0;
+  position: absolute;
+  top: 50%;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.menu-button__bar {
+  margin-top: 2px;
+}
+
+.menu-button__bar::before {
+  top: -1.2rem;
+}
+
+.menu-button__bar::after {
+  top: 1.2rem;
+}
+
+.menu-button__bar::before,
+.menu-button__bar::before {
+  transform: rotate(0deg);
+}
+
+.menu-button--activated .menu-button__bar {
+  background-color: transparent;
+}
+
+.menu-button--activated .menu-button__bar::before {
+  transform: rotate(45deg);
+}
+
+.menu-button--activated .menu-button__bar::after {
+  transform: rotate(-45deg);
+}
+
+.menu-button--activated .menu-button__bar::before,
+.menu-button--activated .menu-button__bar::after {
+  top: 0;
+}

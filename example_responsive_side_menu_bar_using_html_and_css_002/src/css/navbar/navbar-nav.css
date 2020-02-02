@@ -1,0 +1,11 @@
+.navbar__nav {
+  float: right;
+}
+
+@media (max-width: 768px) {
+  .navbar__nav {
+    padding-top: 10rem;
+    text-align: center;
+    width: 100%;
+  }
+}

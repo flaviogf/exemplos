@@ -1,0 +1,28 @@
+.navbar {
+  background-color: white;
+  box-shadow: 0 0 3rem rgba(0, 0, 0, 0.2);
+  font-family: "Roboto";
+  font-size: 2rem;
+  font-weight: 300;
+  height: 10rem;
+  line-height: 10rem;
+  text-transform: uppercase;
+  transition: transform 0.5s cubic-bezier(0.56, 0.1, 0.34, 0.91);
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    background-color: white;
+    font-size: 2.5rem;
+    height: 100%;
+    line-height: 1;
+    position: fixed;
+    transform: translateX(-50rem);
+    width: 25rem;
+  }
+
+  .navbar--opened {
+    transform: translateX(0);
+  }
+}
