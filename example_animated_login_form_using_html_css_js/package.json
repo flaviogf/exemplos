@@ -1,0 +1,15 @@
+{
+  "name": "example_animated_login_form_using_html_css_js",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "parcel": "1.12.4"
+  },
+  "dependencies": {
+    "minireset.css": "0.0.6"
+  },
+  "scripts": {
+    "start": "parcel src/index.html"
+  }
+}
