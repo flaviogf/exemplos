@@ -1,0 +1,9 @@
+.form__icon {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.form__icon i {
+  color: #d9d9d9;
+}

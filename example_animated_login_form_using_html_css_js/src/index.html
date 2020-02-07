@@ -11,31 +11,60 @@
       integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
       crossorigin="anonymous"
     />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:200i,400,600&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../node_modules/minireset.css/minireset.css" />
+    <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/container/container.css" />
     <link rel="stylesheet" href="./css/container/container-form.css" />
     <link rel="stylesheet" href="./css/container/container-image.css" />
     <link rel="stylesheet" href="./css/form/form.css" />
+    <link rel="stylesheet" href="./css/form/form-area.css" />
+    <link rel="stylesheet" href="./css/form/form-group.css" />
+    <link rel="stylesheet" href="./css/form/form-icon.css" />
+    <link rel="stylesheet" href="./css/form/form-image.css" />
     <link rel="stylesheet" href="./css/form/form-input.css" />
+    <link rel="stylesheet" href="./css/form/form-label.css" />
+    <link rel="stylesheet" href="./css/form/form-link.css" />
+    <link rel="stylesheet" href="./css/form/form-title.css" />
   </head>
   <body>
     <div class="container">
       <div class="container__image">
         <img src="./images/phone.png" alt="phone" />
       </div>
+
       <div class="container__form">
         <form class="form">
           <img class="form__image" src="./images/avatar.png" alt="profile" />
-          <span class="form__title">Welcome</span>
+
+          <h2 class="form__title">Welcome</h2>
+
           <div class="form__group">
             <div class="form__icon">
               <i class="fa fa-user"></i>
             </div>
+
             <div class="form__area">
-              <label class="form__label">Username</label>
+              <h3 class="form__label">Username</h3>
               <input class="form__input" />
             </div>
           </div>
+
+          <div class="form__group">
+            <div class="form__icon">
+              <i class="fa fa-lock"></i>
+            </div>
+
+            <div class="form__area">
+              <h3 class="form__label">Password</h3>
+              <input class="form__input" />
+            </div>
+          </div>
+
+          <a class="form__link">Forgot your password?</a>
         </form>
       </div>
     </div>

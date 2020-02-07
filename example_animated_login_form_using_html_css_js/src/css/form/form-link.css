@@ -1,0 +1,12 @@
+.form__link {
+  color: #999;
+  cursor: pointer;
+  display: block;
+  font-size: 0.9rem;
+  text-align: right;
+  transition: 0.3s;
+}
+
+.form__link:hover {
+  color: #38d39f;
+}
