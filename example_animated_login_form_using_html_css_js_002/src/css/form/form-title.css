@@ -1,0 +1,8 @@
+.form__title {
+  display: block;
+  font-size: 32px;
+  font-weight: 600;
+  margin-top: 32px;
+  margin-bottom: 64px;
+  text-align: center;
+}

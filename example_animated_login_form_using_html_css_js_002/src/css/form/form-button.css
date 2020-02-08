@@ -1,0 +1,17 @@
+.form__button {
+  background-image: linear-gradient(120deg, #414b56, #00a2e1);
+  background-size: 200%;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  height: 50px;
+  margin: 16px 0;
+  text-transform: uppercase;
+  transition: 0.3s;
+  width: 100%;
+}
+
+.form__button:hover {
+  background-position: right;
+}

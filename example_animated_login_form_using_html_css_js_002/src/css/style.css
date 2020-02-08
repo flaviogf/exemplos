@@ -1,0 +1,12 @@
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: linear-gradient(120deg, #414b56, #00a2e1);
+}
