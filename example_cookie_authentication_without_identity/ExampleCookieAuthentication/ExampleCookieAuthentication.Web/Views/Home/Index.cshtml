@@ -1,0 +1,8 @@
+﻿@if (User.Identity.IsAuthenticated)
+{
+    <h1>Welcome, @User.Identity.Name</h1>
+}
+else
+{
+    @Html.ActionLink("Sign In", "Index", "SignIn")
+}

@@ -1,0 +1,12 @@
+﻿@model ExampleCookieAuthentication.Web.ViewModels.SignInViewModel
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary()
+
+    @Html.EditorForModel()
+
+    <button type="submit">Sign In</button>
+}
