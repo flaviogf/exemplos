@@ -7,3 +7,8 @@
   transform: translateY(-50%);
   transition: 0.3s;
 }
+
+.form__group--focus .form__label {
+  font-size: 15px;
+  top: -5px;
+}

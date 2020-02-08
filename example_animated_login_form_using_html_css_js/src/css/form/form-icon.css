@@ -6,4 +6,9 @@
 
 .form__icon i {
   color: #d9d9d9;
+  transition: 0.3s;
+}
+
+.form__group--focus .form__icon i {
+  color: #38d39f;
 }

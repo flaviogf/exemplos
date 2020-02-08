@@ -3,6 +3,7 @@
   grid-template-columns: 7% 93%;
   margin: 25px 0;
   padding: 5px 0;
+  position: relative;
   border-bottom: 2px solid #d9d9d9;
 }
 
@@ -12,4 +13,28 @@
 
 .form__group:nth-of-type(2) {
   margin-bottom: 4px;
+}
+
+.form__group::after,
+.form__group::before {
+  background-color: #38d39f;
+  bottom: -2px;
+  content: "";
+  height: 2px;
+  position: absolute;
+  transition: 0.3s;
+  width: 0;
+}
+
+.form__group::after {
+  right: 50%;
+}
+
+.form__group::before {
+  left: 50%;
+}
+
+.form__group--focus::after,
+.form__group--focus::before {
+  width: 50%;
 }

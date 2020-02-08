@@ -1,5 +1,11 @@
 .container__form {
-    align-items: center;
-    display: flex;
-    text-align: center;
+  align-items: center;
+  display: flex;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .container__form {
+    justify-content: center;
+  }
 }
