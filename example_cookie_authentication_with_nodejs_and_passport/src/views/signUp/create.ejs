@@ -1,0 +1,28 @@
+<%- include('../header'); -%>
+
+<img class="sign-in__image" src="/static/images/background.svg" />
+
+<form class="form" action="/sign-up" method="POST">
+  <img class="form__image" src="/static/images/avatar.svg" />
+
+  <span class="form__title">Sign Up</span>
+
+  <div class="form__group">
+    <input class="form__input" type="text" name="name" />
+    <span class="form__placeholder" data-placeholder="Name"></span>
+  </div>
+
+  <div class="form__group">
+    <input class="form__input" type="email" name="email" />
+    <span class="form__placeholder" data-placeholder="Email"></span>
+  </div>
+
+  <div class="form__group">
+    <input class="form__input" type="password" name="password" />
+    <span class="form__placeholder" data-placeholder="Password"></span>
+  </div>
+
+  <button class="form__button" type="submit">Sign Up</button>
+</form>
+
+<%- include('../footer'); -%>

@@ -1,0 +1,10 @@
+.sign-in__image {
+  display: none;
+}
+
+@media (min-width: 960px) {
+  .sign-in__image {
+    display: block;
+    width: 100%;
+  }
+}

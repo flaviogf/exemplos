@@ -1,0 +1,9 @@
+.form {
+  border-radius: 4px;
+  padding: 48px 8px 8px 8px;
+  position: relative;
+  margin: 0 8px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}

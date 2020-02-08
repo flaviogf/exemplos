@@ -1,0 +1,30 @@
+.form__placeholder::before {
+  content: attr(data-placeholder);
+  position: absolute;
+  top: 50%;
+  left: 8px;
+  transform: translateY(-50%);
+  z-index: -1;
+  transition: 0.3s;
+}
+
+.form__placeholder::after {
+  background-color: #4527a0;
+  position: absolute;
+  content: '';
+  height: 2px;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  transition: 0.3s;
+}
+
+.form__group--focus .form__placeholder::before {
+  color: #4527a0;
+  top: -5px;
+  font-size: 12px;
+}
+
+.form__group--focus .form__placeholder::after {
+  width: 100%;
+}
