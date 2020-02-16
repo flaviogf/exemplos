@@ -1,0 +1,12 @@
+{
+  "name": "example_image_hover_effects",
+  "version": "1.0.0",
+  "main": "src/index.html",
+  "license": "MIT",
+  "devDependencies": {
+    "parcel": "1.12.4"
+  },
+  "scripts": {
+    "start": "parcel src/index.html"
+  }
+}
