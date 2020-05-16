@@ -1,0 +1,289 @@
+@section styles {
+    <style>
+        .input {
+            background-color: transparent;
+            border: 2px solid #dddddd;
+            height: 35px;
+        }
+
+        .input--valid {
+            border: 2px solid green;
+        }
+
+        .input--invalid {
+            border: 2px solid red;
+        }
+    </style>
+}
+
+<div id="app">
+    {{ message }}
+</div>
+
+<div id="app-2">
+    <span v-bind:title="message">
+        Hover your mouse
+    </span>
+</div>
+
+<div id="app-3">
+    <span v-if="seen">Now you see me</span>
+</div>
+
+<div id="app-4">
+    <ol>
+        <li v-for="todo in todos">
+            {{ todo.text }}
+        </li>
+    </ol>
+</div>
+
+<div id="app-5">
+    <p>{{ message }}</p>
+    <button v-on:click="reverse">Reverse</button>
+</div>
+
+<div id="app-6">
+    <p>{{ message }}</p>
+    <input v-model="message" />
+</div>
+
+<div id="app-7">
+    <ol>
+        <todo-item v-for="todo in todos" v-bind:todo="todo" v-bind:key="todo.id"></todo-item>
+    </ol>
+</div>
+
+<div id="app-8">
+    <p>Original message: {{ message }}</p>
+    <p>Computed reversed message: {{ reversedMessage }}</p>
+</div>
+
+<div id="app-9">
+    <p>
+        Aks a yes/no question:
+        <input v-model="question" />
+    </p>
+    <p>{{ answer }}</p>
+</div>
+
+<div id="app-10">
+    <input class="input" v-model="name" v-bind:class="{ 'input--valid': valid, 'input--invalid': invalid }" />
+</div>
+
+<div id="app-11">
+    <ul>
+        <li v-for="(item, index) in items" :key="item.id">{{index}}-{{item.message}}</li>
+    </ul>
+</div>
+
+<div id="app-12">
+    <ul>
+        <li v-for="number in numbers">{{ number }}</li>
+    </ul>
+
+    <ul>
+        <li v-for="number in evenNumbers">{{ number }}</li>
+    </ul>
+</div>
+
+<div id="app-13">
+    <form v-on:submit.prevent="add">
+        <label>Add a todo</label>
+        <input v-model="title" />
+        <button>add</button>
+    </form>
+    <ul>
+        <li is="item" v-for="(todo, index) in todos" v-bind:key="todo.id" v-bind:title="todo.title" v-on:remove="remove(index)"></li>
+    </ul>
+</div>
+
+@section scripts {
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: "Hello Word"
+            }
+        })
+
+        var app2 = new Vue({
+            el: "#app-2",
+            data: {
+                message: `You loaded this page on ${new Date().toLocaleDateString()}`
+            }
+        })
+
+        var app3 = new Vue({
+            el: "#app-3",
+            data: {
+                seen: true
+            }
+        })
+
+        var app4 = new Vue({
+            el: "#app-4",
+            data: {
+                todos: [
+                    { text: 'Learn Javascript' },
+                    { text: 'Learn Vue' },
+                    { text: 'Build something awesome' },
+                ]
+            }
+        })
+
+        var app5 = new Vue({
+            el: "#app-5",
+            data: {
+                message: "Hello Vue.js"
+            },
+            methods: {
+                reverse: function() {
+                    this.message = this.message.split('').reverse().join('')
+                }
+            }
+        })
+
+        var app6 = new Vue({
+            el: "#app-6",
+            data: {
+                message: 'Hello Vue.js'
+            }
+        })
+
+        Vue.component('todo-item', {
+            props: ['todo'],
+            template: '<li>{{ todo.text }}</li>'
+        })
+
+        var app7 = new Vue({
+            el: "#app-7",
+            data: {
+                todos: [
+                    { id: 1, text: 'Learn Javascript' },
+                    { id: 2, text: 'Learn Vue.js' },
+                ]
+            }
+        })
+
+        var app8 = new Vue({
+            el: "#app-8",
+            data: {
+                message: "Hello World!"
+            },
+            computed: {
+                reversedMessage: function() {
+                    return this.message.split('').reverse().join('')
+                }
+            }
+        })
+
+        var app9 = new Vue({
+            el: "#app-9",
+            data: {
+                question: '',
+                answer: 'I cannot give you an answer until you ask a question',
+            },
+            watch: {
+                question: function(newValue, oldValue) {
+                    this.answer = "Waiting for you to stop typing..."
+                    this.debounceGetAnswer()
+                }
+            },
+            created: function() {
+                this.debounceGetAnswer = _.debounce(this.getAnswer, 500)
+            },
+            methods:{
+                getAnswer: function() {
+                    if(!/\?/.test(this.question)) {
+                        this.answer = 'Questions usually contain a question mark. ;-)'
+                        return
+                    }
+
+                    axios.get('https://yesno.wtf/api')
+                        .then(res => {
+                            this.answer = res.data.answer
+                        })
+                        .catch(err => { 
+                            this.answer = "Error! Could not reach the API." + error
+                        })
+                }
+            }
+        })
+
+        var app10 = new Vue({
+            el: "#app-10",
+            data: {
+                name: '',
+                valid: false,
+            },
+            computed: {
+                invalid: function() {
+                    return !this.valid
+                }
+            },
+            watch: {
+                name: function(newValue, oldValue) {
+                    this.valid = !!newValue && !!newValue.trim()
+                }
+            }
+        })
+
+        var app11= new Vue({
+            el:"#app-11",
+            data: {
+                items: [
+                    {
+                        id: 1,
+                        message: 'Hello'
+                    },
+                    {
+                        id: 2,
+                        message: 'World'
+                    }
+                ]
+            }
+        })
+
+        var app12 = new Vue({
+            el: "#app-12",
+            data: {
+                numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            },
+            computed: {
+                evenNumbers: function() {
+                    return this.numbers.filter(function(n) {
+                        return n % 2 === 0;
+                    })
+                }
+            }
+        })
+
+        Vue.component('item', {
+            template: `
+                <li>
+                    {{title}}
+                    <button v-on:click="$emit('remove')" type="button">Remove</button>
+                </li>
+            `,
+            props: ['title']
+        })
+
+        var app13 = new Vue({
+            el: "#app-13",
+            data: {
+                id: 0,
+                title: '',
+                todos: [],
+            },
+            methods: {
+                add: function() {
+                    this.todos.push({ id: this.id++, title: this.title })
+                },
+                remove: function(index) {
+                    this.todos.splice(index, 1)
+                }
+            }
+        })
+    </script>
+}
