@@ -12,9 +12,10 @@ namespace HealthChecksDemo
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<ResponseTimeHealthCheck>();
+
             services.AddHealthChecks()
-                .AddCheck("Foo service", () => HealthCheckResult.Degraded("The check of the foo service did not work well"), new string[] { "service" })
-                .AddCheck("Bar service", () => HealthCheckResult.Healthy("The check of the bar service worked"), new string[] { "service" })
+                .AddCheck<ResponseTimeHealthCheck>("ResponseTimeService", tags: new string[] { "service" })
                 .AddCheck("Database", () => HealthCheckResult.Healthy("The check of the database worked"), new string[] { "database", "sql" });
 
             services.AddControllers();
