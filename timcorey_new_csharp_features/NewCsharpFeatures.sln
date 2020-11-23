@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B29BF046-739
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewCsharpFeatures", "src\NewCsharpFeatures\NewCsharpFeatures.csproj", "{99519CEE-9DF0-4BFB-BB06-8BC94CC8BECD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApp", "src\BlazorApp\BlazorApp.csproj", "{F2E78076-DF99-403B-9F05-3F7F6E7101BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,8 +34,21 @@ Global
 		{99519CEE-9DF0-4BFB-BB06-8BC94CC8BECD}.Release|x64.Build.0 = Release|Any CPU
 		{99519CEE-9DF0-4BFB-BB06-8BC94CC8BECD}.Release|x86.ActiveCfg = Release|Any CPU
 		{99519CEE-9DF0-4BFB-BB06-8BC94CC8BECD}.Release|x86.Build.0 = Release|Any CPU
+		{F2E78076-DF99-403B-9F05-3F7F6E7101BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2E78076-DF99-403B-9F05-3F7F6E7101BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2E78076-DF99-403B-9F05-3F7F6E7101BA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F2E78076-DF99-403B-9F05-3F7F6E7101BA}.Debug|x64.Build.0 = Debug|Any CPU
+		{F2E78076-DF99-403B-9F05-3F7F6E7101BA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F2E78076-DF99-403B-9F05-3F7F6E7101BA}.Debug|x86.Build.0 = Debug|Any CPU
+		{F2E78076-DF99-403B-9F05-3F7F6E7101BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2E78076-DF99-403B-9F05-3F7F6E7101BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2E78076-DF99-403B-9F05-3F7F6E7101BA}.Release|x64.ActiveCfg = Release|Any CPU
+		{F2E78076-DF99-403B-9F05-3F7F6E7101BA}.Release|x64.Build.0 = Release|Any CPU
+		{F2E78076-DF99-403B-9F05-3F7F6E7101BA}.Release|x86.ActiveCfg = Release|Any CPU
+		{F2E78076-DF99-403B-9F05-3F7F6E7101BA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{99519CEE-9DF0-4BFB-BB06-8BC94CC8BECD} = {B29BF046-7394-4329-9237-2690E2AA9B00}
+		{F2E78076-DF99-403B-9F05-3F7F6E7101BA} = {B29BF046-7394-4329-9237-2690E2AA9B00}
 	EndGlobalSection
 EndGlobal
