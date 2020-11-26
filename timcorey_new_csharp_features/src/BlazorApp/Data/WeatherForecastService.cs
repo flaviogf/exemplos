@@ -13,13 +13,31 @@ namespace BlazorApp.Data
 
         public Task<WeatherForecast[]> GetForecastAsync(DateTime startDate)
         {
-            var rng = new Random();
-            return Task.FromResult(Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = startDate.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            }).ToArray());
+            var random = new Random();
+
+            var result = Enumerable
+                .Range(1, 5)
+                .Select((it) => new WeatherForecast
+                {
+                    Date = DateTime.Today.AddDays(it),
+                    TemperatureC = random.Next(-20, 55)
+                })
+                .Select((it) =>
+                {
+                    it.Summary = it.TemperatureF switch
+                    {
+                        < 0 => "Well below freezing",
+                        >= 0 and < 32 => "Freezing",
+                        32 => "Exactly freezing",
+                        >= 80 => "Hot",
+                        _ => "Unknown"
+                    };
+
+                    return it;
+                })
+                .ToArray();
+
+            return Task.FromResult(result);
         }
     }
 }
