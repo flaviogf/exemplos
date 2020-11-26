@@ -13,7 +13,10 @@ Console.WriteLine(frank);
 
 Person nina = new(id: 2, firstName: "Nina", lastName: "Fernandes");
 
-Console.WriteLine(nina);
+if (nina is not null)
+{
+    Console.WriteLine(nina);
+}
 
 double Add(double x, double y)
 {
