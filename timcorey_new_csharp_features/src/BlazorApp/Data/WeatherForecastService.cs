@@ -29,8 +29,9 @@ namespace BlazorApp.Data
                         < 0 => "Well below freezing",
                         >= 0 and < 32 => "Freezing",
                         32 => "Exactly freezing",
-                        >= 80 => "Hot",
-                        _ => "Unknown"
+                        > 32 and < 65 => "Cool",
+                        >= 65 and <= 85 => "Warm",
+                        > 85 => "Hot"
                     };
 
                     return it;
