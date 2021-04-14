@@ -6,19 +6,19 @@ import (
 )
 
 func main() {
-	n := 25
+	n := 30
 
 	start := time.Now()
 
 	fmt.Println(fib(n))
 
-	fmt.Println(time.Since(start).Nanoseconds()) // 1097500
+	fmt.Println(time.Since(start).Nanoseconds()) // 5841500
 
 	start = time.Now()
 
 	fmt.Println(fibMemo(n, make([]int, n+1)))
 
-	fmt.Println(time.Since(start).Nanoseconds()) // 1064900
+	fmt.Println(time.Since(start).Nanoseconds()) // 75900
 
 	start = time.Now()
 
@@ -44,7 +44,7 @@ func fibMemo(n int, memo []int) int {
 		return memo[n]
 	}
 
-	memo[n] = fib(n-1) + fib(n-2)
+	memo[n] = fibMemo(n-1, memo) + fibMemo(n-2, memo)
 
 	return memo[n]
 }
