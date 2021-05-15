@@ -1,0 +1,12 @@
+{
+  "name": "drag-and-drop-example",
+  "version": "1.0.0",
+  "main": "src/index.html",
+  "license": "MIT",
+  "devDependencies": {
+    "parcel": "2.0.0-beta.2"
+  },
+  "scripts": {
+    "start": "yarn parcel src/index.html"
+  }
+}
